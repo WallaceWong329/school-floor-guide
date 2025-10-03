@@ -28,4 +28,4 @@
 - **版本**: 1.0
 
 ## 線上演示
-訪問: [https://wallacewong329.github.io/school-floor-guide/](https://wallacewong329.github.io/school-floor-guide/)
+訪問: [https://wallacewong329.github.io/school-floor-guide/](https://wallacewong329.github.io/school-floor-guide/){:target="_blank"}
