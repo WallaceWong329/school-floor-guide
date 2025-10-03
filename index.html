@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小學樓層導覽 Kiosk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="kiosk-container">
+        <!-- 載入頁面 - 整個頁面可點擊 -->
+        <div id="loading-view" class="active-view" onclick="enterApp(event)">
+            <div id="welcome-content">
+                <img id="welcome-logo" src="https://upload.wikimedia.org/wikipedia/zh/6/6b/ELCHK_Faith_Love_Lutheran_School_Logo.png" alt="學校校徽">
+                <h1 id="welcome-title">歡迎來到基督教香港信義會信愛學校</h1>
+                <p id="welcome-subtitle">Welcome to ELCHK Faith Love Lutheran School</p>
+                <div id="enter-hint">
+                    <p>點擊屏幕任意位置進入</p>
+                    <p>Click anywhere to enter</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 原有內容保持不變 -->
+        <header id="kiosk-header">
+            <img id="school-logo" src="https://upload.wikimedia.org/wikipedia/zh/6/6b/ELCHK_Faith_Love_Lutheran_School_Logo.png" alt="學校校徽">
+            <h1 id="main-title"></h1>
+            <div class="header-controls">
+                <div id="lang-switch-container" onclick="toggleLanguage()">
+                    <span id="lang-zh" class="lang-option active">中</span>
+                    <span id="lang-divider">|</span>
+                    <span id="lang-en" class="lang-option">ENG</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="kiosk-main">
+            <div id="home-view" class="inactive-view">
+                <h2 class="welcome-title" data-lang-zh="歡迎來到" data-lang-en="Welcome to"></h2>
+                <div id="floor-grid">
+                    <button class="floor-btn" data-floor="G">G/F</button>
+                    <button class="floor-btn" data-floor="1">1/F</button>
+                    <button class="floor-btn" data-floor="2">2/F</button>
+                    <button class="floor-btn" data-floor="3">3/F</button>
+                    <button class="floor-btn" data-floor="4">4/F</button>
+                    <button class="floor-btn" data-floor="5">5/F</button>
+                    <button class="floor-btn" data-floor="6">6/F</button>
+                </div>
+            </div>
+
+            <div id="detail-view" class="inactive-view">
+                <button id="back-btn" onclick="showHome()">⬅️ 返回 | Back</button>
+                
+                <h2 id="floor-title"></h2>
+                
+                <div id="detail-content">
+                    <div id="image-container">
+                        <img id="floor-image" src="" alt="樓層照片">
+                    </div>
+                    
+                    <div id="text-info">
+                        <div class="info-group">
+                            <p class="label" data-lang-zh="教室/設施：" data-lang-en="Classrooms/Facilities:"></p>
+                            <p class="content-text" data-content="classrooms"></p>
+                        </div>
+                        
+                        <div class="info-group">
+                            <p class="label" data-lang-zh="描述：" data-lang-en="Description:"></p>
+                            <p class="content-text" data-content="description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

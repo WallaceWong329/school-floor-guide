@@ -1,0 +1,611 @@
+/* style.css - 9:16專用版本 */
+
+:root {
+    --main-color: #004b92; 
+    --accent-color: #f7b731; 
+    --bg-color: #f8f9fa;
+    --text-color-zh: #212529;
+    --text-color-en: #6c757d;
+}
+
+/* 重置所有樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+}
+
+#kiosk-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+}
+
+/* ================================== */
+/* Loading View - 載入頁面 */
+/* ================================== */
+#loading-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--main-color) 0%, #00264d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    cursor: pointer;
+}
+
+#welcome-content {
+    text-align: center;
+    padding: 5vh;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+#welcome-logo {
+    height: 20vh;
+    width: auto;
+    margin-bottom: 3vh;
+    filter: brightness(0) invert(1);
+}
+
+#welcome-title {
+    font-size: 5vh;
+    margin-bottom: 2vh;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#welcome-subtitle {
+    font-size: 3vh;
+    margin-bottom: 3vh;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* 進入提示樣式 */
+#enter-hint {
+    margin-top: 4vh;
+    text-align: center;
+    animation: blink 2s infinite;
+}
+
+#enter-hint p {
+    font-size: 2.5vh;
+    margin: 0.5vh 0;
+    opacity: 0.8;
+}
+
+#enter-btn {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    border: none;
+    border-radius: 50px;
+    padding: 2vh 4vw;
+    font-size: 3.5vh;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    pointer-events: none; /* 讓點擊事件穿透到父元素 */
+}
+
+/* 載入頁面顯示控制 */
+#loading-view.active-view {
+    display: flex !important;
+    z-index: 1000;
+}
+
+#loading-view.inactive-view {
+    display: none !important;
+}
+
+/* 主內容在載入頁面活躍時隱藏 */
+#loading-view.active-view ~ #kiosk-header,
+#loading-view.active-view ~ #kiosk-footer,
+#loading-view.active-view ~ #kiosk-main {
+    display: none !important;
+}
+
+/* 主內容在載入頁面隱藏時顯示 */
+#loading-view.inactive-view ~ #kiosk-header,
+#loading-view.inactive-view ~ #kiosk-footer,
+#loading-view.inactive-view ~ #kiosk-main {
+    display: flex !important;
+}
+
+#loading-view.inactive-view ~ #kiosk-main {
+    display: block !important;
+}
+
+/* ================================== */
+/* 進入動畫效果 */
+/* ================================== */
+
+/* 載入頁面淡出動畫 */
+#loading-view.exiting {
+    animation: fadeOut 0.6s ease-in-out forwards;
+}
+
+/* 主內容淡入動畫 */
+#kiosk-header.entering {
+    animation: fadeIn 0.6s ease-in-out 0.2s both;
+}
+
+#kiosk-main.entering {
+    animation: fadeIn 0.6s ease-in-out 0.4s both;
+}
+
+#kiosk-footer.entering {
+    animation: fadeIn 0.6s ease-in-out 0.6s both;
+}
+
+/* 按鈕點擊動畫 */
+#enter-btn.clicked {
+    animation: buttonClick 0.6s ease-in-out forwards;
+}
+
+/* 動畫關鍵幀 */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes buttonClick {
+    0% {
+        transform: scale(1);
+        background-color: var(--accent-color);
+    }
+    50% {
+        transform: scale(0.9);
+        background-color: #ffd166;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+        background-color: #ffd166;
+    }
+}
+
+/* 內容淡入效果 */
+#home-view.entering {
+    animation: fadeIn 0.6s ease-in-out 0.4s both;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 波紋擴散效果 */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.8s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+/* ================================== */
+/* Header - 固定高度 */
+/* ================================== */
+#kiosk-header {
+    height: 12vh; /* 固定高度 */
+    background-color: var(--main-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#school-logo {
+    height: 8vh;
+    width: auto;
+}
+
+#main-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 3.5vh;
+    font-weight: bold;
+}
+
+#lang-switch-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    padding: 0.5vh 1vw;
+    cursor: pointer;
+}
+
+.lang-option {
+    padding: 0 0.5vw;
+    font-size: 2.2vh;
+    opacity: 0.6;
+}
+
+.lang-option.active {
+    opacity: 1;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+#lang-divider {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+/* ================================== */
+/* Footer - 固定高度 */
+/* ================================== */
+#kiosk-footer {
+    height: 8vh; /* 固定高度 */
+    background-color: #e9ecef;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8vh;
+    border-top: 1px solid #dee2e6;
+}
+
+#contact-info {
+    display: flex;
+    gap: 3vw;
+}
+
+#contact-info p {
+    margin: 0;
+}
+
+/* ================================== */
+/* Main Content - 可滾動區域 */
+/* ================================== */
+#kiosk-main {
+    flex: 1;
+    height: calc(100vh - 20vh); /* 100vh - header(12vh) - footer(8vh) */
+    overflow-y: auto;
+    position: relative;
+}
+
+/* 隱藏滾動條 */
+#kiosk-main::-webkit-scrollbar {
+    display: none;
+}
+
+#kiosk-main {
+    scrollbar-width: none;
+}
+
+/* ================================== */
+/* View 切換 */
+/* ================================== */
+.active-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 10;
+}
+
+.inactive-view {
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ================================== */
+/* Home View - 樓層選擇 */
+/* ================================== */
+#home-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 0;
+}
+
+.welcome-title {
+    font-size: 4vh;
+    color: var(--main-color);
+    margin-bottom: 2vh;
+    font-weight: 300;
+}
+
+#floor-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, 1fr);
+    gap: 1.5vh;
+    width: 80%;
+    height: calc(100vh - 30vh); /* 適應9:16比例 */
+}
+
+.floor-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+    font-weight: bold;
+    color: white;
+    background-color: var(--main-color);
+    border: 4px solid var(--accent-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.floor-btn:active {
+    transform: scale(0.98);
+}
+
+.floor-btn.active {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+}
+
+/* ================================== */
+/* Detail View - 9:16等分布局 */
+/* ================================== */
+#detail-view {
+    width: 100%;
+    height: 100%;
+    padding: 2vh 4vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#back-btn {
+    align-self: flex-start;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 6px;
+    padding: 1vh 2vw;
+    font-size: 2.2vh;
+    cursor: pointer;
+    margin-bottom: 2vh;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+#floor-title {
+    font-size: 3.5vh;
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 2vh;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 1vh;
+}
+
+/* 主要內容區域 - 等分布局 */
+#detail-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    min-height: 0; /* 重要：允許flex子項收縮 */
+}
+
+/* 圖片區域 - 與文字區域等分 */
+#image-container {
+    flex: 1; /* 與文字區域等分 */
+    min-height: 0;
+    background-color: white;
+    border: 4px solid var(--accent-color);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#floor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 填滿容器 */
+}
+
+/* 文字區域 - 與圖片區域等分 */
+#text-info {
+    flex: 1; /* 與圖片區域等分 */
+    min-height: 0;
+    background-color: white;
+    border: 4px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* 隱藏文字區域滾動條 */
+#text-info::-webkit-scrollbar {
+    display: none;
+}
+
+#text-info {
+    scrollbar-width: none;
+}
+
+.info-group {
+    border-bottom: 1px dashed #dee2e6;
+    padding-bottom: 1vh;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 2.2vh;
+    color: var(--main-color);
+    margin-bottom: 0.5vh;
+}
+
+.content-text {
+    font-size: 2.2vh;
+    line-height: 1.4;
+    color: var(--text-color-zh);
+}
+
+.content-text.lang-en {
+    color: var(--text-color-en);
+}
+
+/* ================================== */
+/* 9:16專用響應式調整 */
+/* ================================== */
+
+/* 確保在9:16比例下完美顯示 */
+@media (max-aspect-ratio: 9/16) {
+    /* 在更窄的比例下微調 */
+    #floor-grid {
+        width: 90%;
+        gap: 1vh;
+    }
+    
+    .floor-btn {
+        font-size: 4.5vh;
+    }
+    
+    #detail-content {
+        gap: 1.5vh;
+    }
+    
+    #welcome-title {
+        font-size: 4vh;
+    }
+    
+    #welcome-subtitle {
+        font-size: 2.5vh;
+    }
+}
+
+@media (min-aspect-ratio: 9/16) {
+    /* 在更寬的比例下微調 */
+    #floor-grid {
+        width: 70%;
+    }
+    
+    #detail-content {
+        gap: 2.5vh;
+    }
+}
+
+/* 小屏幕額外優化 */
+@media (max-height: 600px) {
+    #kiosk-header {
+        height: 10vh;
+    }
+    
+    #kiosk-footer {
+        height: 6vh;
+    }
+    
+    #school-logo {
+        height: 6vh;
+    }
+    
+    #main-title {
+        font-size: 3vh;
+    }
+    
+    .floor-btn {
+        font-size: 4vh;
+    }
+    
+    #floor-grid {
+        height: calc(100vh - 26vh);
+    }
+    
+    #welcome-logo {
+        height: 15vh;
+    }
+    
+    #welcome-title {
+        font-size: 4vh;
+    }
+    
+    #welcome-subtitle {
+        font-size: 2.5vh;
+    }
+}
+
+/* 超大屏幕優化 */
+@media (min-height: 1000px) {
+    #welcome-title {
+        font-size: 6vh;
+    }
+    
+    #welcome-subtitle {
+        font-size: 3.5vh;
+    }
+    
+    #enter-hint p {
+        font-size: 3vh;
+    }
+    
+    .floor-btn {
+        font-size: 6vh;
+    }
+    
+    .welcome-title {
+        font-size: 5vh;
+    }
+}
