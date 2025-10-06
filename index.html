@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小學樓層導覽 Kiosk</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- PWA 三要素 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3367D6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
 
@@ -12,8 +17,8 @@
         <!-- 載入頁面 - 整個頁面可點擊 -->
         <div id="loading-view" class="active-view" onclick="enterApp(event)">
             <div id="welcome-content">
-                <img id="welcome-logo" src="https://upload.wikimedia.org/wikipedia/zh/6/6b/ELCHK_Faith_Love_Lutheran_School_Logo.png" alt="學校校徽">
-                <h1 id="welcome-title">歡迎來到基督教香港信義會信愛學校</h1>
+                <img id="welcome-logo" src="assets/CWFLLS_LOGOv2.png" alt="學校校徽">
+                <p id="welcome-title">歡迎來到基督教香港信義會信愛學校</p>
                 <p id="welcome-subtitle">Welcome to ELCHK Faith Love Lutheran School</p>
                 <div id="enter-hint">
                     <p>點擊屏幕任意位置進入</p>
@@ -24,7 +29,7 @@
 
         <!-- 原有內容保持不變 -->
         <header id="kiosk-header">
-            <img id="school-logo" src="https://upload.wikimedia.org/wikipedia/zh/6/6b/ELCHK_Faith_Love_Lutheran_School_Logo.png" alt="學校校徽">
+            <img id="school-logo" src="assets/CWFLLS_BENNER_UPPERCASEv5.png" alt="學校校徽">
             <h1 id="main-title"></h1>
             <div class="header-controls">
                 <div id="lang-switch-container" onclick="toggleLanguage()">

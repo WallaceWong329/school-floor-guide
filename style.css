@@ -56,10 +56,9 @@ html, body {
 }
 
 #welcome-logo {
-    height: 20vh;
+    height: 30vh;
     width: auto;
     margin-bottom: 3vh;
-    filter: brightness(0) invert(1);
 }
 
 #welcome-title {
@@ -590,7 +589,7 @@ html, body {
 /* 超大屏幕優化 */
 @media (min-height: 1000px) {
     #welcome-title {
-        font-size: 6vh;
+        font-size: 5vh;
     }
     
     #welcome-subtitle {

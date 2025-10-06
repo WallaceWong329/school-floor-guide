@@ -3,8 +3,8 @@
 // 學校基本資訊 (用於 Header)
 const schoolInfo = {
     "name": {
-        "zh": "基督教香港信義會信愛學校", 
-        "en": "ELCHK Faith Love Lutheran School"
+        "zh": "", 
+        "en": ""
     }
 };
 
