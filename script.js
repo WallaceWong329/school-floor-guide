@@ -187,17 +187,23 @@ window.toggleLanguage = function() {
  * Update All Texts Based on Current Language Setting (header/labels)
  */
 function updateAllTexts() {
-    // 1. Update header/welcome message
+    // 1. 更新標頭/歡迎詞
     document.getElementById('main-title').textContent = schoolInfo.name[currentLang];
     const welcomeTitle = document.querySelector('.welcome-title');
     if (welcomeTitle) {
         welcomeTitle.textContent = welcomeTitle.getAttribute(`data-lang-${currentLang}`);
     }
 
-    // 2. Update content labels
+    // 2. 更新內容標籤
     labelEls.forEach(el => {
         el.textContent = el.getAttribute(`data-lang-${currentLang}`);
     });
+
+    // 3. 更新返回按鈕文字
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.textContent = backBtn.getAttribute(`data-lang-${currentLang}`);
+    }
 }
 
 // ==================================
@@ -212,21 +218,25 @@ function updateDisplay(floorKey) {
     const data = floorData[floorKey];
     if (!data) return;
 
-    // 1. Update title (always display bilingual)
-    floorTitleEl.textContent = `${data.title.zh} / ${data.title.en}`;
+    // 1. 更新標題 (顯示樓層名稱和樓層代號)
+    if (currentLang === 'zh') {
+        floorTitleEl.textContent = `${data.title.zh} (${floorKey}/F)`;
+    } else {
+        floorTitleEl.textContent = `${data.title.en} (${floorKey}/F)`;
+    }
 
-    // 2. Update text content
+    // 2. 更新文本內容
     contentTextEls.forEach(el => {
         const contentKey = el.getAttribute('data-content'); 
         el.textContent = data[contentKey][currentLang];
-        // Add class based on current language to apply CSS colors
+        // 根據當前語言添加 class 以應用 CSS 顏色
         el.className = `content-text lang-${currentLang}`;
     });
 
-    // 3. Handle static images
+    // 3. 處理靜態圖片
     floorImageEl.src = data.image; 
 
-    // 4. Highlight button
+    // 4. 高亮按鈕
     floorBtns.forEach(btn => btn.classList.remove('active'));
     const activeBtn = document.querySelector(`.floor-btn[data-floor="${floorKey}"]`);
     if(activeBtn) {
