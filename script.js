@@ -1,6 +1,6 @@
 // script.js
 
-// 學校基本資訊 (用於 Header)
+// School Information (for Header)
 const schoolInfo = {
     "name": {
         "zh": "", 
@@ -8,28 +8,53 @@ const schoolInfo = {
     }
 };
 
-// 樓層資料 (使用靜態圖片 test.jpg)
+// Floor Data (using static images)
 const floorData = {
     "G": {
         "title": {"zh": "地下", "en": "Ground Floor"},
-        "classrooms": {"zh": "校務處、禮堂、音樂室、教師休息室", "en": "General Office, School Hall, Music Room, Staff Room"},
-        "description": {"zh": "學校門面及主要行政區域。請家長和訪客在此處登記。", "en": "The main administrative area. Visitors must register at the General Office here."},
+        "classrooms": {"zh": "家教會室、言語治療室、輔導室、工友休息室、地堂、體育室、籃球場", "en": "Parent-Teacher Association Room, Speech Therapy Room, Counseling Room, Janitor Rest Room, Hall, Physical Education Room, Basketball Court"},
+        "description": {"zh": "主要活動和支援服務區域。包含體育設施和專業支援服務。", "en": "Main activity and support service area. Includes sports facilities and professional support services."},
         "image": "assets/test.jpg" 
     },
     "1": {
         "title": {"zh": "一樓", "en": "1st Floor"},
-        "classrooms": {"zh": "1A, 1B, 1C, 1D 教室；電腦室；洗手間", "en": "Classrooms 1A, 1B, 1C, 1D; Computer Room; Restrooms"},
-        "description": {"zh": "小一教學區。電腦室配備最新設備供資訊科技學習。", "en": "Primary One teaching zone. The Computer Room is equipped for IT lessons."},
+        "classrooms": {"zh": "電腦室、教員休息室、音樂室、校長室、校務處、醫療室、校園電視台、視覺藝術室", "en": "Computer Room, Staff Room, Music Room, Principal's Office, General Office, Medical Room, Campus TV Station, Visual Arts Room"},
+        "description": {"zh": "行政管理和多媒體教學區域。學校核心行政辦公室和創意學習空間。", "en": "Administrative and multimedia teaching area. Core administrative offices and creative learning spaces."},
         "image": "assets/test.jpg"
     },
-    "2": { "title": {"zh": "二樓", "en": "2nd Floor"}, "classrooms": {"zh": "2A - 2D 教室；圖書館", "en": "Classrooms 2A - 2D; Library"}, "description": {"zh": "圖書館是學生閱讀和研究的理想場所。", "en": "The library is an ideal place for student reading and research."}, "image": "assets/test.jpg" },
-    "3": { "title": {"zh": "三樓", "en": "3rd Floor"}, "classrooms": {"zh": "3A - 3D 教室；科學實驗室", "en": "Classrooms 3A - 3D; Science Lab"}, "description": {"zh": "高年級教學區。科學實驗室供學生進行實踐操作。", "en": "Upper primary teaching zone. The laboratory is for hands-on science experiments."}, "image": "assets/test.jpg" },
-    "4": { "title": {"zh": "四樓", "en": "4th Floor"}, "classrooms": {"zh": "4A - 4D 教室；美術室；多媒體學習室", "en": "Classrooms 4A - 4D; Art Room; Multi-Media Learning Room"}, "description": {"zh": "美術室為學生提供創作空間。", "en": "The Art Room fosters creativity."}, "image": "assets/test.jpg" },
-    "5": { "title": {"zh": "五樓", "en": "5th Floor"}, "classrooms": {"zh": "5A - 5D 教室；常識科專題研習室", "en": "Classrooms 5A - 5D; Liberal Studies Project Room"}, "description": {"zh": "供進行跨學科專題研究。", "en": "Equipped for cross-curricular project studies."}, "image": "assets/test.jpg" },
-    "6": { "title": {"zh": "六樓", "en": "6th Floor"}, "classrooms": {"zh": "6A - 6D 教室；天台花園入口", "en": "Classrooms 6A - 6D; Rooftop Garden Entrance"}, "description": {"zh": "最高樓層及戶外學習區。", "en": "The highest floor and outdoor learning area."}, "image": "assets/test.jpg" }
+    "2": { 
+        "title": {"zh": "二樓", "en": "2nd Floor"}, 
+        "classrooms": {"zh": "中華文化室、課室", "en": "Chinese Culture Room, Classrooms"}, 
+        "description": {"zh": "傳統文化學習和常規教學區域。", "en": "Traditional culture learning and regular teaching area."}, 
+        "image": "assets/test.jpg" 
+    },
+    "3": { 
+        "title": {"zh": "三樓", "en": "3rd Floor"}, 
+        "classrooms": {"zh": "科學室、活動室、圖書館、互動學習室", "en": "Science Laboratory, Activity Room, Library, Interactive Learning Room"}, 
+        "description": {"zh": "科學探索和知識學習中心。提供豐富的學習資源和實踐機會。", "en": "Science exploration and knowledge learning center. Provides abundant learning resources and practical opportunities."}, 
+        "image": "assets/test.jpg" 
+    },
+    "4": { 
+        "title": {"zh": "四樓", "en": "4th Floor"}, 
+        "classrooms": {"zh": "英語室、課室", "en": "English Room, Classrooms"}, 
+        "description": {"zh": "語言學習和專業教學區域。", "en": "Language learning and specialized teaching area."}, 
+        "image": "assets/test.jpg" 
+    },
+    "5": { 
+        "title": {"zh": "五樓", "en": "5th Floor"}, 
+        "classrooms": {"zh": "教職員休息室、課室", "en": "Teaching Staff Rest Room, Classrooms"}, 
+        "description": {"zh": "教師休息和教學區域。", "en": "Teacher rest and teaching area."}, 
+        "image": "assets/test.jpg" 
+    },
+    "6": { 
+        "title": {"zh": "六樓", "en": "6th Floor"}, 
+        "classrooms": {"zh": "360虛擬實景室、禮堂", "en": "360 Virtual Reality Room, Auditorium"}, 
+        "description": {"zh": "創新科技和大型活動空間。配備先進的虛擬實境設備。", "en": "Innovative technology and large event space. Equipped with advanced virtual reality facilities."}, 
+        "image": "assets/test.jpg" 
+    }
 };
 
-// DOM 元素
+// DOM Elements
 const homeView = document.getElementById('home-view');
 const detailView = document.getElementById('detail-view');
 const floorBtns = document.querySelectorAll('.floor-btn');
@@ -42,17 +67,17 @@ const floorImageEl = document.getElementById('floor-image');
 const loadingView = document.getElementById('loading-view');
 const enterBtn = document.getElementById('enter-btn');
 
-// 狀態變數
+// State Variables
 let currentFloorKey = 'G';
-let currentLang = 'zh'; // 預設中文
-let hasEntered = false; // 防止多次進入
+let currentLang = 'zh'; // Default Chinese
+let hasEntered = false; // Prevent multiple entries
 
 // ==================================
-// 載入頁面功能
+// Loading Page Functions
 // ==================================
 
 /**
- * 創建波紋效果 - 全屏版本
+ * Create Ripple Effect - Full Screen Version
  */
 function createFullScreenRipple(event) {
     const loadingView = document.getElementById('loading-view');
@@ -74,41 +99,41 @@ function createFullScreenRipple(event) {
 }
 
 /**
- * 進入主應用 - 帶動畫效果
+ * Enter Main Application - With Animation Effects
  */
 window.enterApp = function(event) {
-    // 防止多次點擊
+    // Prevent multiple clicks
     if (hasEntered) return;
     hasEntered = true;
     
-    // 創建全屏波紋效果
+    // Create full screen ripple effect
     createFullScreenRipple(event);
     
-    // 開始過場動畫序列
+    // Start transition animation sequence
     setTimeout(() => {
-        // 載入頁面退出動畫
+        // Loading page exit animation
         loadingView.classList.add('exiting');
         
-        // 顯示主界面
+        // Show main interface
         setTimeout(() => {
-            // 隱藏載入頁面，顯示主內容
+            // Hide loading page, show main content
             loadingView.classList.remove('active-view');
             loadingView.classList.add('inactive-view');
             loadingView.style.display = 'none';
             
-            // 顯示主頁
+            // Show home page
             showHome();
             
-        }, 500); // 等待載入頁面退出動畫完成
-    }, 200); // 等待波紋動畫完成
+        }, 500); // Wait for loading page exit animation to complete
+    }, 200); // Wait for ripple animation to complete
 };
 
 // ==================================
-// 1. 視圖和語言切換函數
+// 1. View and Language Switching Functions
 // ==================================
 
 /**
- * 顯示主頁 (樓層選擇網格)
+ * Show Home Page (Floor Selection Grid)
  */
 window.showHome = function() {
     homeView.classList.add('active-view');
@@ -116,12 +141,12 @@ window.showHome = function() {
     detailView.classList.add('inactive-view');
     detailView.classList.remove('active-view');
     
-    // 確保回到主頁時按鈕不再高亮
+    // Ensure buttons are not highlighted when returning to home
     floorBtns.forEach(btn => btn.classList.remove('active'));
 };
 
 /**
- * 顯示詳情頁
+ * Show Detail Page
  * @param {string} floorKey 
  */
 window.showDetail = function(floorKey) {
@@ -135,12 +160,12 @@ window.showDetail = function(floorKey) {
 };
 
 /**
- * 切換語言 (中文 <-> 英文)
+ * Switch Language (Chinese <-> English)
  */
 window.toggleLanguage = function() {
     currentLang = (currentLang === 'zh') ? 'en' : 'zh';
     
-    // 1. 更新語言切換按鈕視覺狀態
+    // 1. Update language switch button visual state
     if (currentLang === 'zh') {
         langZhEl.classList.add('active');
         langEnEl.classList.remove('active');
@@ -149,59 +174,59 @@ window.toggleLanguage = function() {
         langEnEl.classList.add('active');
     }
     
-    // 2. 重新繪製所有文本 (標頭/歡迎詞)
+    // 2. Redraw all texts (header/welcome message)
     updateAllTexts();
     
-    // 3. 如果在詳情頁，重新載入樓層資訊
+    // 3. If in detail page, reload floor information
     if (detailView.classList.contains('active-view')) {
         updateDisplay(currentFloorKey);
     }
 };
 
 /**
- * 根據當前語言設置更新所有文本 (標頭/標籤)
+ * Update All Texts Based on Current Language Setting (header/labels)
  */
 function updateAllTexts() {
-    // 1. 更新標頭/歡迎詞
+    // 1. Update header/welcome message
     document.getElementById('main-title').textContent = schoolInfo.name[currentLang];
     const welcomeTitle = document.querySelector('.welcome-title');
     if (welcomeTitle) {
         welcomeTitle.textContent = welcomeTitle.getAttribute(`data-lang-${currentLang}`);
     }
 
-    // 2. 更新內容標籤
+    // 2. Update content labels
     labelEls.forEach(el => {
         el.textContent = el.getAttribute(`data-lang-${currentLang}`);
     });
 }
 
 // ==================================
-// 2. 內容更新 (靜態圖片)
+// 2. Content Update (Static Images)
 // ==================================
 
 /**
- * 根據樓層鍵值和當前語言更新顯示內容
+ * Update Display Content Based on Floor Key and Current Language
  * @param {string} floorKey 
  */
 function updateDisplay(floorKey) {
     const data = floorData[floorKey];
     if (!data) return;
 
-    // 1. 更新標題 (始終顯示雙語)
+    // 1. Update title (always display bilingual)
     floorTitleEl.textContent = `${data.title.zh} / ${data.title.en}`;
 
-    // 2. 更新文本內容
+    // 2. Update text content
     contentTextEls.forEach(el => {
         const contentKey = el.getAttribute('data-content'); 
         el.textContent = data[contentKey][currentLang];
-        // 根據當前語言添加 class 以應用 CSS 顏色
+        // Add class based on current language to apply CSS colors
         el.className = `content-text lang-${currentLang}`;
     });
 
-    // 3. 處理靜態圖片
+    // 3. Handle static images
     floorImageEl.src = data.image; 
 
-    // 4. 高亮按鈕
+    // 4. Highlight button
     floorBtns.forEach(btn => btn.classList.remove('active'));
     const activeBtn = document.querySelector(`.floor-btn[data-floor="${floorKey}"]`);
     if(activeBtn) {
@@ -210,35 +235,35 @@ function updateDisplay(floorKey) {
 }
 
 // ==================================
-// 3. 初始化
+// 3. Initialization
 // ==================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM 載入完成');
+    console.log('DOM loaded');
     
-    // 1. 載入頁面已經通過 onclick 屬性綁定事件
-    // 不再需要單獨為按鈕綁定事件
+    // 1. Loading page already bound via onclick attribute
+    // No need to bind button separately
     
-    // 2. 強制設置為中文
+    // 2. Force set to Chinese
     currentLang = 'zh';
     
-    // 3. 為 Home View 的每個樓層按鈕添加事件監聽器 
+    // 3. Add event listeners for each floor button in Home View
     floorBtns.forEach(button => {
         button.addEventListener('click', () => {
             const floorKey = button.getAttribute('data-floor');
-            console.log('點擊樓層:', floorKey);
+            console.log('Clicked floor:', floorKey);
             showDetail(floorKey); 
         });
     });
 
-    // 4. 初始載入：設定所有語言文本
+    // 4. Initial load: Set all language texts
     updateAllTexts();
 
-    // 5. 初始載入時，手動設置語言按鈕狀態 (預設 'zh' 激活)
+    // 5. On initial load, manually set language button state (default 'zh' active)
     langZhEl.classList.add('active');
     langEnEl.classList.remove('active');
     
-    // 6. 確保初始狀態正確
+    // 6. Ensure correct initial state
     loadingView.classList.add('active-view');
     loadingView.classList.remove('inactive-view');
     homeView.classList.add('inactive-view');
@@ -246,5 +271,5 @@ document.addEventListener('DOMContentLoaded', () => {
     detailView.classList.add('inactive-view');
     detailView.classList.remove('active-view');
     
-    console.log('初始化完成，等待用戶點擊屏幕進入');
+    console.log('Initialization complete, waiting for user to click screen to enter');
 });
